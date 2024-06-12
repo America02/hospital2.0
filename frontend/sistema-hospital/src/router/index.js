@@ -4,7 +4,7 @@ import LoginView from '@/components/login.vue'
 import Dashboard from '@/components/dashboard.vue'
 import Usuario from '@/components/usuario.vue'
 import Personas from '@/components/personas.vue'
-import PersonalMedico from '@/components/personalMedico.vue'
+import Horarios from '@/components/horariosTrabajador.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -23,11 +23,10 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
-      children:[{path:'/personas', name:'personas',component:Personas},  {
-        path: '/personalMedico',
-        name: 'personalMedico',
-        component: PersonalMedico
-      }]
+      children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/horariosTrabajador',
+        name: 'horarioTrabajador',
+        component: Horarios}]
+      
     },
     {
       path: '/usuario',
@@ -40,7 +39,10 @@ const router = createRouter({
       component: Personas
     },
     
+
+  
+    
   ]
 })
 
-export default router;
+export default router
