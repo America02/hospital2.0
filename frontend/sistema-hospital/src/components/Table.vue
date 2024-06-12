@@ -17,135 +17,88 @@
             </button>
         </h2>
         <div id="accordion-color-body-1" class="hidden" aria-labelledby="accordion-color-heading-1">
-            <div class="py-16">
-                <div class="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-5xl">
-                    <div class="hidden lg:block lg:w-1/3 bg-cover" style="
-          background-image: url('https://images.pexels.com/photos/4021779/pexels-photo-4021779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-        "></div>
-                    <div class="w-full p-8 lg:w-2/3">
-                        <p class="text-xl text-teal-600 text-center uppercase">¡Bienvenido!</p>
-
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="border-b w-1/5 lg:w-1/4"></span>
-                            <a href="#" class="text-xs text-center text-gray-500 uppercase">Realiza tu registro</a>
-                            <span class="border-b w-1/5 lg:w-1/4"></span>
-                        </div>
-                        <div class="flex">
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Nombre(s)</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="email" />
+            <div class="flex items-center justify-center p-12">
+                <!-- Author: FormBold Team -->
+                <div class="mx-auto w-full max-w-[550px] bg-white p-8 rounded-lg shadow-lg">
+                    <h2 class="text-2xl font-bold text-center mb-1 text-[#07074D]">HOSPITAL PRIVILAGE CARE</h2>
+                    <p class="text-sm text-center mb-8 text-[#6B7280]">PUESTOS</p>
+                    <form>
+                        <div class="-mx-3 flex flex-wrap">
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="nombre-puesto"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Nombre del
+                                        Puesto</label>
+                                    <input type="text" name="nombre-puesto" id="nombre-puesto"
+                                        placeholder="Nombre del Puesto"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Primer Apellido</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="password" />
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="departamento"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Departamento</label>
+                                    <input type="text" name="departamento" id="departamento" placeholder="Departamento"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Segundo Apellido</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="email" />
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="descripcion"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Descripción</label>
+                                    <input type="text" name="descripcion" id="descripcion"
+                                        placeholder="Descripción del Puesto"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="flex">
-
-                            <div class="lg:w-2/4 mt-4 mx-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">CURP</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="password" />
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="requisitos"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Requisitos</label>
+                                    <input type="text" name="requisitos" id="requisitos"
+                                        placeholder="Requisitos del Puesto"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                            <div class="lg:w-1/4 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">Género</label>
-                                <select id="countries"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>-- Seleccionar --</option>
-                                    <option value="US">Masculino</option>
-                                    <option value="CA">Femenino</option>
-                                    <option value="FR">Indistinto</option>
-
-                                </select>
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="salario" class="mb-3 block text-base font-medium text-[#07074D]">Salario
+                                        Base</label>
+                                    <input type="text" name="salario" id="salario" placeholder="Salario Base"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                            <div class="lg:w-1/4 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">Tipo de
-                                    Sangre</label>
-                                <select id="countries"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>-- Seleccionar --</option>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                </select>
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="horario"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Horario</label>
+                                    <input type="text" name="horario" id="horario" placeholder="Horario del Puesto"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="flex">
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">Fecha
-                                    Nacimiento</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="date" />
-                            </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries"
-                                    class="lock text-gray-700 text-sm font-bold mb-2">Telefono</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="number" />
-                            </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">email</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="email" />
+                            <div class="w-full px-3 sm:w-1/2">
+                                <div class="mb-5">
+                                    <label for="estado"
+                                        class="mb-3 block text-base font-medium text-[#07074D]">Estado</label>
+                                    <select name="estado" id="estado"
+                                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md">
+                                        <option value="">Seleccione</option>
+                                        <option value="ocupado">Ocupado</option>
+                                        <option value="vacante">Vacante</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex">
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">Usuario</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="text" />
-                            </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries"
-                                    class="lock text-gray-700 text-sm font-bold mb-2">Contraseña</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="password" />
-                            </div>
-                            <div class="lg:w-1/3 mt-4 mx-2">
-                                <label for="countries" class="lock text-gray-700 text-sm font-bold mb-2">Repite
-                                    Contraseña</label>
-                                <input
-                                    class="bg-gray-50 text-gray-700 focus:outline-none focus:shadow-outline border border-gray-300 rounded py-2 px-4 block w-full appearance-none"
-                                    type="password" />
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                            <button class="bg-teal-500 text-white font-bold py-2 px-4 w-1/3 rounded hover:bg-gray-600">
-                                Iniciar Sesion
+                        <div>
+                            <button
+                                class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                                Enviar
                             </button>
                         </div>
-                        <div class="mt-4 flex items-center justify-between">
-                            <span class="border-b w-1/5 md:w-1/4"></span>
-                            <router-link to="/login">
-                                <a href="#" class="text-xs text-gray-500 uppercase">Ya tengo una cuenta</a>
-                                <span class="border-b w-1/5 md:w-1/4"></span>
-                            </router-link>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
+
         </div>
         <h2 id="accordion-color-heading-2">
             <button type="button"
@@ -163,7 +116,9 @@
         <div id="accordion-color-body-2" class="hidden" aria-labelledby="accordion-color-heading-2">
             <div class="mt-4">
                 <button type="button"
-                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                    data-accordion-target="#accordion-color-body-1" aria-expanded="true"
+                    aria-controls="accordion-color-body-1">
                     Agregar Puesto
                 </button>
 
@@ -171,35 +126,49 @@
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>
-                                <th scope="col" class="px-6 py-3">Product name</th>
-                                <th scope="col" class="px-6 py-3">Color</th>
-                                <th scope="col" class="px-6 py-3">Category</th>
-                                <th scope="col" class="px-6 py-3">Price</th>
+                                <th scope="col" class="px-6 py-3">ID del Puesto</th>
+                                <th scope="col" class="px-6 py-3">Nombre del Puesto</th>
+                                <th scope="col" class="px-6 py-3">Departamento</th>
+                                <th scope="col" class="px-6 py-3">Descripción</th>
+                                <th scope="col" class="px-6 py-3">Requisitos</th>
+                                <th scope="col" class="px-6 py-3">Salario Base</th>
+                                <th scope="col" class="px-6 py-3">Horario</th>
+                                <th scope="col" class="px-6 py-3">Estado</th>
                                 <th scope="col" class="px-6 py-3"><span class="sr-only">Edit</span></th>
+                                <th scope="col" class="px-6 py-3"><span class="sr-only">Delete</span></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(product, index) in products" :key="index"
+                            <tr v-for="(puesto, index) in puestos" :key="index"
                                 class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row"
                                     class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ product.name }}
+                                    {{ puesto.id }}
                                 </th>
-                                <td class="px-6 py-4">{{ product.color }}</td>
-                                <td class="px-6 py-4">{{ product.category }}</td>
-                                <td class="px-6 py-4">{{ product.price }}</td>
+                                <td class="px-6 py-4">{{ puesto.nombre }}</td>
+                                <td class="px-6 py-4">{{ puesto.departamento }}</td>
+                                <td class="px-6 py-4">{{ puesto.descripcion }}</td>
+                                <td class="px-6 py-4">{{ puesto.requisitos }}</td>
+                                <td class="px-6 py-4">{{ puesto.salario }}</td>
+                                <td class="px-6 py-4">{{ puesto.horario }}</td>
+                                <td class="px-6 py-4">{{ puesto.estado }}</td>
                                 <td class="px-6 py-4 text-right">
                                     <a href="#"
                                         class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="#"
+                                        class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
         </div>
 
-        
+
     </div>
 
 
@@ -209,32 +178,59 @@
 export default {
     data() {
         return {
-            products: [
+            puestos: [
                 {
-                    name: "Apple MacBook Pro 17\"",
-                    color: "Silver",
-                    category: "Laptop",
-                    price: "$2999"
+                    id: "P001",
+                    nombre: "Cardiólogo",
+                    departamento: "Cardiología",
+                    descripcion: "Especialista en enfermedades del corazón.",
+                    requisitos: "Licenciatura en Medicina, especialización en Cardiología.",
+                    salario: "$5000",
+                    horario: "8:00 AM - 4:00 PM",
+                    estado: "Ocupado"
                 },
                 {
-                    name: "Microsoft Surface Pro",
-                    color: "White",
-                    category: "Laptop PC",
-                    price: "$1999"
+                    id: "P002",
+                    nombre: "Enfermera",
+                    departamento: "Emergencias",
+                    descripcion: "Atención primaria en la sala de emergencias.",
+                    requisitos: "Licenciatura en Enfermería, certificación en primeros auxilios.",
+                    salario: "$3000",
+                    horario: "7:00 AM - 3:00 PM",
+                    estado: "Vacante"
                 },
                 {
-                    name: "Magic Mouse 2",
-                    color: "Black",
-                    category: "Accessories",
-                    price: "$99"
+                    id: "P003",
+                    nombre: "Técnico de Radiología",
+                    departamento: "Radiología",
+                    descripcion: "Operación de equipos de imagenología médica.",
+                    requisitos: "Título de Técnico en Radiología.",
+                    salario: "$3500",
+                    horario: "9:00 AM - 5:00 PM",
+                    estado: "Ocupado"
                 },
                 {
-                    name: "Tablet 2",
-                    color: "White",
-                    category: "Personal",
-                    price: "$50"
+                    id: "P004",
+                    nombre: "Cirujano",
+                    departamento: "Quirófano",
+                    descripcion: "Realización de operaciones quirúrgicas.",
+                    requisitos: "Licenciatura en Medicina, especialización en Cirugía.",
+                    salario: "$8000",
+                    horario: "10:00 AM - 6:00 PM",
+                    estado: "Ocupado"
+                },
+                {
+                    id: "P005",
+                    nombre: "Recepcionista",
+                    departamento: "Admisiones",
+                    descripcion: "Atención al paciente en el área de admisiones.",
+                    requisitos: "Diplomado en Administración, habilidades de comunicación.",
+                    salario: "$2500",
+                    horario: "6:00 AM - 2:00 PM",
+                    estado: "Vacante"
                 }
             ]
+
         };
     }
 };
