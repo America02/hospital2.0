@@ -4,6 +4,9 @@ import LoginView from '@/components/login.vue'
 import Dashboard from '@/components/dashboard.vue'
 import Usuario from '@/components/usuario.vue'
 import Personas from '@/components/personas.vue'
+import Table from '@/components/Table.vue'
+import Puestos from '@/components/puestos.vue'
+
 
 
 const router = createRouter({
@@ -23,8 +26,10 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
-      children:[{path:'/personas', name:'personas',component:Personas}]
-      
+      children:[
+        {path:'/personas', name:'personas',component:Personas},
+        {path:'/puestos', name:'puestos',component:Table},
+      ]
     },
     {
       path: '/usuario',
@@ -36,7 +41,12 @@ const router = createRouter({
       name: 'Personas',
       component: Personas
     },
+
+
+
     
+  
+ 
     
   ]
 })
