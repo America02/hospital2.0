@@ -30,15 +30,14 @@ const router = createRouter({
  
       children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/horariosTrabajador',
         name: 'horarioTrabajador',
-        component: Horarios}]
+        component: Horarios},  {
+          path: '/personalMedico',
+          name: 'personalMedico',
+          component: PersonalMedico
+        }]},
       
 
-      children:[{path:'/personas', name:'personas',component:Personas},  {
-        path: '/personalMedico',
-        name: 'personalMedico',
-        component: PersonalMedico
-      }]
-    },
+    
     {
       path: '/usuario',
       name: 'Usuario',
