@@ -11,6 +11,6 @@ class User(Base):
     password = Column(LONGTEXT)
     created_at = Column(DateTime)
     estatus = Column(Boolean, default=False)
-    id_persona = Column(Integer)
+    Id_persona = Column(Integer)
 
     # items = relationship("Item", back_populates="owner")  # Clave Foránea
