@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Enum
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
@@ -28,7 +28,7 @@ class User(Base):
     # Clave foránea para la relación uno a uno con User
     
 
-=======
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
@@ -45,4 +45,4 @@ class User(Base):
     Id_persona = Column(Integer)
 
     # items = relationship("Item", back_populates="owner")  # Clave Foránea
->>>>>>> 629e4c2f68ac99f01ea12e71625724effa5e3822
+
