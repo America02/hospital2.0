@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey, Enum
 from sqlalchemy.dialects.mysql import LONGTEXT
 from sqlalchemy.orm import relationship
@@ -27,3 +28,21 @@ class User(Base):
     # Clave foránea para la relación uno a uno con User
     
 
+=======
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy.dialects.mysql import LONGTEXT
+from sqlalchemy.orm import relationship
+from config.db import Base
+
+class User(Base):
+    __tablename__ = "users"
+
+    id = Column(Integer, primary_key=True, index=True)
+    usuario = Column(String(255))
+    password = Column(LONGTEXT)
+    created_at = Column(DateTime)
+    estatus = Column(Boolean, default=False)
+    Id_persona = Column(Integer)
+
+    # items = relationship("Item", back_populates="owner")  # Clave Foránea
+>>>>>>> 629e4c2f68ac99f01ea12e71625724effa5e3822
