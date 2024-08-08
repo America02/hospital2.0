@@ -28,7 +28,8 @@ def update_area_medica(db: Session, id: int, area: schemas.areas_medicas.AreaMed
     db_area = db.query(models.areas_medicas.AreaMedica).filter(models.areas_medicas.AreaMedica.ID == id).first()
     if db_area:
         for var, value in vars(area).items():
-            setattr(db_area, var, value) if value is not None else None
+            if value is not None:
+                setattr(db_area, var, value)
         db.commit()
         db.refresh(db_area)
     return db_area
