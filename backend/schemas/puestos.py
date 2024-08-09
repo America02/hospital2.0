@@ -1,10 +1,10 @@
-from pydantic import BaseModel
 from typing import Optional
-from enum import Enum
+from pydantic import BaseModel
 from datetime import datetime
+from enum import Enum
 
 class TurnoEnum(str, Enum):
-    Manana = "Mañana"
+    Mañana = "Mañana"
     Tarde = "Tarde"
     Noche = "Noche"
 
@@ -12,7 +12,9 @@ class PuestoBase(BaseModel):
     Nombre: str
     Descripcion: Optional[str] = None
     Salario: Optional[float] = None
-    Turno: TurnoEnum
+    Turno: Optional[TurnoEnum] = None
+    Creado: datetime
+    Modificado: Optional[datetime] = None
 
 class PuestoCreate(PuestoBase):
     pass
@@ -22,8 +24,6 @@ class PuestoUpdate(PuestoBase):
 
 class Puesto(PuestoBase):
     PuestoID: int
-    Creado: datetime
-    Modificado: datetime
 
     class Config:
         orm_mode = True

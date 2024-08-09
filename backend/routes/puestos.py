@@ -1,48 +1,51 @@
 from fastapi import APIRouter, HTTPException, Depends
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
-import crud.puestos as crud
-import schemas.puestos as schemas
-import models.puestos as models
-from config.db import SessionLocal
 from typing import List
+import crud.puestos, config.db, schemas.puestos, models.puestos
+from jwt_config import solicita_token
+from portadortoken import Portador
 
 puesto = APIRouter()
 
-models.Base.metadata.create_all(bind=SessionLocal().get_bind())
+models.puestos.Base.metadata.create_all(bind=config.db.engine)
 
 def get_db():
-    db = SessionLocal()
+    db = config.db.SessionLocal()
     try:
         yield db
     finally:
         db.close()
 
-@puesto.get("/puestos/", response_model=List[schemas.Puesto], tags=["Puestos"])
+@puesto.get("/puestos/", response_model=List[schemas.puestos.Puesto], tags=["Puestos"], dependencies=[Depends(Portador())])
 def read_puestos(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
-    db_puestos = crud.get_puestos(db=db, skip=skip, limit=limit)
+    db_puestos = crud.puestos.get_puestos(db=db, skip=skip, limit=limit)
     return db_puestos
 
-@puesto.get("/puesto/{puesto_id}", response_model=schemas.Puesto, tags=["Puestos"])
-def read_puesto(puesto_id: int, db: Session = Depends(get_db)):
-    db_puesto = crud.get_puesto(db=db, puesto_id=puesto_id)
+@puesto.get("/puesto/{id}", response_model=schemas.puestos.Puesto, tags=["Puestos"], dependencies=[Depends(Portador())])
+def read_puesto(id: int, db: Session = Depends(get_db)):
+    db_puesto = crud.puestos.get_puesto(db=db, id=id)
     if db_puesto is None:
         raise HTTPException(status_code=404, detail="Puesto no encontrado")
     return db_puesto
 
-@puesto.post("/puesto/", response_model=schemas.Puesto, tags=["Puestos"])
-def create_puesto(puesto: schemas.PuestoCreate, db: Session = Depends(get_db)):
-    return crud.create_puesto(db=db, puesto=puesto)
+@puesto.post("/puestos/", response_model=schemas.puestos.Puesto, tags=["Puestos"])
+def create_puesto(puesto: schemas.puestos.PuestoCreate, db: Session = Depends(get_db)):
+    db_puesto = crud.puestos.get_puesto_by_nombre(db, nombre=puesto.Nombre)
+    if db_puesto:
+        raise HTTPException(status_code=400, detail="El nombre del puesto ya existe")
+    return crud.puestos.create_puesto(db=db, puesto=puesto)
 
-@puesto.put("/puesto/{puesto_id}", response_model=schemas.Puesto, tags=["Puestos"])
-def update_puesto(puesto_id: int, puesto: schemas.PuestoUpdate, db: Session = Depends(get_db)):
-    db_puesto = crud.update_puesto(db=db, puesto_id=puesto_id, puesto=puesto)
+@puesto.put("/puesto/{id}", response_model=schemas.puestos.Puesto, tags=["Puestos"], dependencies=[Depends(Portador())])
+def update_puesto(id: int, puesto: schemas.puestos.PuestoUpdate, db: Session = Depends(get_db)):
+    db_puesto = crud.puestos.update_puesto(db=db, id=id, puesto=puesto)
     if db_puesto is None:
-        raise HTTPException(status_code=404, detail="Puesto no encontrado")
+        raise HTTPException(status_code=404, detail="Puesto no encontrado, no se pudo actualizar")
     return db_puesto
 
-@puesto.delete("/puesto/{puesto_id}", response_model=schemas.Puesto, tags=["Puestos"])
-def delete_puesto(puesto_id: int, db: Session = Depends(get_db)):
-    db_puesto = crud.delete_puesto(db=db, puesto_id=puesto_id)
+@puesto.delete("/puesto/{id}", response_model=schemas.puestos.Puesto, tags=["Puestos"], dependencies=[Depends(Portador())])
+def delete_puesto(id: int, db: Session = Depends(get_db)):
+    db_puesto = crud.puestos.delete_puesto(db=db, id=id)
     if db_puesto is None:
-        raise HTTPException(status_code=404, detail="Puesto no encontrado")
+        raise HTTPException(status_code=404, detail="Puesto no encontrado, no se pudo eliminar")
     return db_puesto
