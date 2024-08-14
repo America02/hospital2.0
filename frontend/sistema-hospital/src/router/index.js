@@ -5,7 +5,7 @@ import Dashboard from '@/components/dashboard.vue'
 import Usuario from '@/components/usuario.vue'
 import Personas from '@/components/personas.vue'
 
-import Horarios from '@/components/horariosTrabajador.vue'
+import areasMedicas from '@/components/areasMedicas.vue'
 
 import PersonalMedico from '@/components/personalMedico.vue'
 
@@ -28,9 +28,9 @@ const router = createRouter({
       name: 'dashboard',
       component: Dashboard,
  
-      children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/horariosTrabajador',
-        name: 'horarioTrabajador',
-        component: Horarios},  {
+      children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/areasMedicas',
+        name: 'areasMedicas',
+        component: areasMedicas},  {
           path: '/personalMedico',
           name: 'personalMedico',
           component: PersonalMedico
