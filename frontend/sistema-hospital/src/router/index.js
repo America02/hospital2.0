@@ -6,9 +6,9 @@ import Usuario from '@/components/usuario.vue'
 import Personas from '@/components/personas.vue'
 
 import Horarios from '@/components/horariosTrabajador.vue'
-
 import PersonalMedico from '@/components/personalMedico.vue'
-
+import Puestos from '@/components/puestos.vue'
+import PuestosDepartamentos from '@/components/puestos_departamentos.vue'  // Importa el componente puestos_departamentos.vue
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,16 +28,34 @@ const router = createRouter({
       name: 'dashboard',
       component: Dashboard,
  
-      children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/horariosTrabajador',
-        name: 'horarioTrabajador',
-        component: Horarios},  {
+      children:[
+        { 
+          path:'/personas', 
+          name:'personas',
+          component:Personas 
+        }, 
+        {      
+          path: '/horariosTrabajador',
+          name: 'horarioTrabajador',
+          component: Horarios
+        },
+        {
           path: '/personalMedico',
           name: 'personalMedico',
           component: PersonalMedico
-        }]},
-      
-
-    
+        },
+        {
+          path: '/puestos',
+          name: 'puestos',
+          component: Puestos
+        },
+        {
+          path: '/puestos_departamentos',  // Define la ruta para el componente puestos_departamentos.vue
+          name: 'puestos_departamentos',
+          component: PuestosDepartamentos
+        }
+      ]
+    },
     {
       path: '/usuario',
       name: 'Usuario',
@@ -48,10 +66,6 @@ const router = createRouter({
       name: 'Personas',
       component: Personas
     },
-
-  
-    
-
   ]
 })
 
