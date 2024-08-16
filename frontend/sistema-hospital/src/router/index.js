@@ -1,12 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import RegisterUser from '@/components/registerUser.vue'
-import LoginView from '@/components/login.vue'
-import Dashboard from '@/components/dashboard.vue'
-import Usuario from '@/components/usuario.vue'
-import areasMedicas from '@/components/areasMedicas.vue'
-import PersonalMedico from '@/components/personalMedico.vue'
-import Puestos from '@/components/puestos.vue'
-import PuestosDepartamentos from '@/components/puestos_departamentos.vue'  // Importa el componente puestos_departamentos.vue
+import { createRouter, createWebHistory } from 'vue-router';
+import RegisterUser from '@/components/registerUser.vue';
+import LoginView from '@/components/login.vue';
+import Dashboard from '@/components/dashboard.vue';
+import Usuario from '@/components/usuario.vue';
+import Personas from '@/components/personas.vue';
+import PersonalMedico from '@/components/personalMedico.vue';
+import Puestos from '@/components/puestos.vue';
+import PuestosDepartamentos from '@/components/puestos_departamentos.vue';
+import AreasMedicas from '@/components/areasMedicas.vue';  // Importa el componente areasMedicas.vue
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,68 +15,52 @@ const router = createRouter({
     {
       path: '/',
       name: 'login',
-      component: LoginView
+      component: LoginView,
     },
     {
       path: '/register',
       name: 'register',
-      component: RegisterUser
+      component: RegisterUser,
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: Dashboard,
- 
-      children:[{path:'/personas', name:'personas',component:Personas}, 
-      {      path: '/areasMedicas',
-        name: 'areasMedicas',
-        component: areasMedicas},  {
-
-      children:[
-        { 
-          path:'/personas', 
-          name:'personas',
-          component:Personas 
-        }, 
-        {      
-          path: '/horariosTrabajador',
-          name: 'horarioTrabajador',
-          component: Horarios
+      children: [
+        {
+          path: 'personas',
+          name: 'personas',
+          component: Personas,
         },
         {
-
-          path: '/personalMedico',
+          path: 'areasMedicas',
+          name: 'areasMedicas',
+          component: AreasMedicas,
+        },
+       
+        {
+          path: 'personalMedico',
           name: 'personalMedico',
-          component: PersonalMedico
+          component: PersonalMedico,
         },
         {
-          path: '/puestos',
+          path: 'puestos',
           name: 'puestos',
-          component: Puestos
+          component: Puestos,
         },
         {
-          path: '/puestos_departamentos',  // Define la ruta para el componente puestos_departamentos.vue
+          path: 'puestos_departamentos',
           name: 'puestos_departamentos',
-          component: PuestosDepartamentos
-        }
-      ]
+          component: PuestosDepartamentos,
+        },
+      ],
     },
     {
       path: '/usuario',
-      name: 'Usuario',
-      component: Usuario
+      name: 'usuario',
+      component: Usuario,
     },
-    {
-      path: '/personas',
-      name: 'Personas',
-      component: Personas
-    },
-    ]
-
-  }
-]
-})
-
-
+  ],
+});
 
 export default router;
