@@ -28,28 +28,28 @@ const router = createRouter({
       component: Dashboard,
       children: [
         {
-          path: 'personas',
+          path: '/personas',
           name: 'personas',
           component: Personas,
         },
         {
-          path: 'areasMedicas',
+          path: '/areasMedicas',
           name: 'areasMedicas',
           component: AreasMedicas,
         },
        
         {
-          path: 'personalMedico',
+          path: '/personalMedico',
           name: 'personalMedico',
           component: PersonalMedico,
         },
         {
-          path: 'puestos',
+          path: '/puestos',
           name: 'puestos',
           component: Puestos,
         },
         {
-          path: 'puestos_departamentos',
+          path: '/puestos_departamentos',
           name: 'puestos_departamentos',
           component: PuestosDepartamentos,
         },

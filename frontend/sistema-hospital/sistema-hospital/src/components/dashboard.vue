@@ -58,28 +58,28 @@
             <ul id="dropdown-example0" class="hidden py-2 space-y-2">
                   <li>
                      <RouterLink to="/personas">
-                     <a  class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personas</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personas</a>
                      </RouterLink>
                   </li>
                   <li>
                   <RouterLink to="/puestos">
-                     <a  class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Puestos</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Puestos</a>
                   </RouterLink>
                   </li>
                   <li>
                   <RouterLink to="/puestos_departamentos">
-                     <a  class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Puestos Departamentos</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Puestos Departamentos</a>
                   </RouterLink>
                   </li>
                   <li>
                   <RouterLink to="/personalMedico">
-                     <a  class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personal Medico</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Personal Medico</a>
                   </RouterLink>
                   </li>
                   <li>
-                     <RouterLink to="/areasMedicas">
+                     <RouterLink to="/horariosTrabajador">
 
-                     <a  class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Áreas Médicas</a>
+                     <a href="#" class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Horarios</a>
                      </RouterLink>
                   </li>
             </ul>
