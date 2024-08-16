@@ -4,10 +4,6 @@ import LoginView from '@/components/login.vue'
 import Dashboard from '@/components/dashboard.vue'
 import Usuario from '@/components/usuario.vue'
 import areasMedicas from '@/components/areasMedicas.vue'
-
-=======
-import Horarios from '@/components/horariosTrabajador.vue'
-
 import PersonalMedico from '@/components/personalMedico.vue'
 import Puestos from '@/components/puestos.vue'
 import PuestosDepartamentos from '@/components/puestos_departamentos.vue'  // Importa el componente puestos_departamentos.vue
@@ -30,10 +26,11 @@ const router = createRouter({
       name: 'dashboard',
       component: Dashboard,
  
-      children:[{path:'/personas', name:'personas',component:Personas}, {      path: '/areasMedicas',
+      children:[{path:'/personas', name:'personas',component:Personas}, 
+      {      path: '/areasMedicas',
         name: 'areasMedicas',
         component: areasMedicas},  {
-=======
+
       children:[
         { 
           path:'/personas', 
@@ -73,7 +70,12 @@ const router = createRouter({
       name: 'Personas',
       component: Personas
     },
-  ]
+    ]
+
+  }
+]
 })
+
+
 
 export default router;
