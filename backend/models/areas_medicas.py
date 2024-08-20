@@ -10,7 +10,7 @@ class EstatusEnum(str, enum.Enum):
     Inactivo = "Inactivo"
 
 class AreaMedica(Base):
-    __tablename__ = "tbc_areas_medicas"
+    __tablename__ = "tbc_areas_medicas"  # Nombre de la tabla
 
     ID = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     Nombre = Column(String(150), nullable=False)
