@@ -1,43 +1,67 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Gestión de Puestos por Departamento</h1>
-    <form @submit.prevent="agregarPuestoDepto" class="mb-4">
-      <div class="grid grid-cols-2 gap-4">
-        <input v-model="nuevoPuesto.Nombre" type="text" placeholder="Nombre" class="p-2 border rounded" required />
-        <input v-model="nuevoPuesto.Descripcion" type="text" placeholder="Descripción" class="p-2 border rounded" />
-        <input v-model="nuevoPuesto.Salario" type="number" placeholder="Salario" class="p-2 border rounded" />
-        <select v-model="nuevoPuesto.Turno" class="p-2 border rounded">
-          <option disabled value="">Seleccionar turno</option>
-          <option value="Mañana">Mañana</option>
-          <option value="Tarde">Tarde</option>
-          <option value="Noche">Noche</option>
-        </select>
-        <input v-model="nuevoPuesto.DepartamentoID" type="number" placeholder="Departamento ID" class="p-2 border rounded" required />
+  <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h1 class="text-3xl font-bold mb-6 text-gray-800">Gestión de Puestos por Departamento</h1>
+    
+    <!-- Formulario para agregar o editar puesto -->
+    <form @submit.prevent="agregarOActualizarPuesto" class="space-y-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="form-group">
+          <label for="nombre" class="block text-gray-700">Nombre</label>
+          <input v-model="nuevoPuesto.Nombre" id="nombre" type="text" placeholder="Nombre" class="p-3 border border-gray-300 rounded-lg w-full" required />
+        </div>
+        <div class="form-group">
+          <label for="descripcion" class="block text-gray-700">Descripción</label>
+          <input v-model="nuevoPuesto.Descripcion" id="descripcion" type="text" placeholder="Descripción" class="p-3 border border-gray-300 rounded-lg w-full" />
+        </div>
+        <div class="form-group">
+          <label for="salario" class="block text-gray-700">Salario</label>
+          <input v-model="nuevoPuesto.Salario" id="salario" type="number" placeholder="Salario" class="p-3 border border-gray-300 rounded-lg w-full" />
+        </div>
+        <div class="form-group">
+          <label for="turno" class="block text-gray-700">Turno</label>
+          <select v-model="nuevoPuesto.Turno" id="turno" class="p-3 border border-gray-300 rounded-lg w-full">
+            <option disabled value="">Seleccionar turno</option>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="departamentoID" class="block text-gray-700">Departamento ID</label>
+          <input v-model="nuevoPuesto.DepartamentoID" id="departamentoID" type="number" placeholder="Departamento ID" class="p-3 border border-gray-300 rounded-lg w-full" required />
+        </div>
       </div>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded mt-4">Agregar Puesto</button>
+      <button type="submit" class="bg-blue-500 text-white p-3 rounded-lg w-full hover:bg-blue-600 transition duration-300">
+        {{ editando ? 'Actualizar Puesto' : 'Guardar Puesto' }}
+      </button>
     </form>
 
-    <table class="w-full border-collapse bg-white">
-      <thead class="bg-gray-100">
+    <!-- Tabla para mostrar los puestos por departamento -->
+    <table class="mt-6 w-full bg-white rounded-lg shadow-md">
+      <thead class="bg-gray-100 text-gray-600">
         <tr>
-          <th class="border p-2">Nombre</th>
-          <th class="border p-2">Descripción</th>
-          <th class="border p-2">Salario</th>
-          <th class="border p-2">Turno</th>
-          <th class="border p-2">Departamento ID</th>
-          <th class="border p-2">Acciones</th>
+          <th class="py-3 px-4 border-b">Nombre</th>
+          <th class="py-3 px-4 border-b">Descripción</th>
+          <th class="py-3 px-4 border-b">Salario</th>
+          <th class="py-3 px-4 border-b">Turno</th>
+          <th class="py-3 px-4 border-b">Departamento ID</th>
+          <th class="py-3 px-4 border-b">Fecha Registro</th>
+          <th class="py-3 px-4 border-b">Fecha Actualización</th>
+          <th class="py-3 px-4 border-b">Acciones</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="puesto in puestos" :key="puesto.PuestoID" class="text-center">
-          <td class="border p-2">{{ puesto.Nombre }}</td>
-          <td class="border p-2">{{ puesto.Descripcion }}</td>
-          <td class="border p-2">{{ puesto.Salario }}</td>
-          <td class="border p-2">{{ puesto.Turno }}</td>
-          <td class="border p-2">{{ puesto.DepartamentoID }}</td>
-          <td class="border p-2">
-            <button @click="editarPuesto(puesto)" class="bg-yellow-500 text-white p-1 rounded mx-1">Editar</button>
-            <button @click="eliminarPuesto(puesto.PuestoID)" class="bg-red-500 text-white p-1 rounded mx-1">Eliminar</button>
+        <tr v-for="puesto in puestos" :key="puesto.PuestoID">
+          <td class="py-3 px-4 border-b">{{ puesto.Nombre }}</td>
+          <td class="py-3 px-4 border-b">{{ puesto.Descripcion }}</td>
+          <td class="py-3 px-4 border-b">{{ puesto.Salario }}</td>
+          <td class="py-3 px-4 border-b">{{ puesto.Turno }}</td>
+          <td class="py-3 px-4 border-b">{{ puesto.DepartamentoID }}</td>
+          <td class="py-3 px-4 border-b">{{ new Date(puesto.Creado).toLocaleDateString() }}</td>
+          <td class="py-3 px-4 border-b">{{ puesto.Modificado ? new Date(puesto.Modificado).toLocaleDateString() : 'Nunca' }}</td>
+          <td class="py-3 px-4 border-b text-center">
+            <button @click="editarPuesto(puesto)" class="bg-yellow-500 text-white p-2 rounded-lg hover:bg-yellow-600 transition duration-300">Editar</button>
+            <button @click="eliminarPuesto(puesto.PuestoID)" class="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 transition duration-300 mt-2">Eliminar</button>
           </td>
         </tr>
       </tbody>
@@ -51,6 +75,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
+      puestos: [],
       nuevoPuesto: {
         Nombre: '',
         Descripcion: '',
@@ -58,7 +83,6 @@ export default {
         Turno: '',
         DepartamentoID: ''
       },
-      puestos: [],
       editando: false,
       idEditando: null,
       token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Ikplc3MiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJqZXNzQDEuY29tIiwiQ29udHJhc2VuYSI6IjEyMyIsIk51bWVyb19UZWxlZm9uaWNvX01vdmlsIjoiNzY0MTExMTExMSJ9.0nMdZw0ZcxmDvVwW9N9e7ztfXxhBdeY8DJB5WCMwx-8'
@@ -74,14 +98,24 @@ export default {
         });
         this.puestos = response.data;
       } catch (error) {
-        console.error('Error al obtener los puestos por departamento:', error);
+        console.error('Error al obtener los puestos:', error);
       }
     },
-    async agregarPuestoDepto() {
+    async agregarOActualizarPuesto() {
       try {
         let response;
+        const puestoData = { ...this.nuevoPuesto };
+
+        // Agrega valores predeterminados para Creado y Modificado si están vacíos
+        if (!puestoData.Creado) {
+          puestoData.Creado = new Date().toISOString();
+        }
+        if (!puestoData.Modificado) {
+          puestoData.Modificado = new Date().toISOString();
+        }
+
         if (this.editando) {
-          response = await axios.put(`http://localhost:8000/puestos_departamentos/${this.idEditando}`, this.nuevoPuesto, {
+          response = await axios.put(`http://localhost:8000/puesto_departamento/${this.idEditando}`, puestoData, {
             headers: {
               'Authorization': `Bearer ${this.token}`
             }
@@ -89,14 +123,14 @@ export default {
           this.editando = false;
           this.idEditando = null;
         } else {
-          response = await axios.post('http://localhost:8000/puestos_departamentos', this.nuevoPuesto, {
+          response = await axios.post('http://localhost:8000/puestos_departamentos', puestoData, {
             headers: {
               'Authorization': `Bearer ${this.token}`
             }
           });
         }
 
-        if (response.status === 200) {
+        if (response.status === 200 || response.status === 201) {
           this.nuevoPuesto = { Nombre: '', Descripcion: '', Salario: '', Turno: '', DepartamentoID: '' };
           await this.obtenerPuestos();
         } else {
@@ -113,38 +147,47 @@ export default {
     },
     async eliminarPuesto(id) {
       try {
-        const response = await axios.delete(`http://localhost:8000/puestos_departamentos/${id}`, {
+        await axios.delete(`http://localhost:8000/puesto_departamento/${id}`, {
           headers: {
             'Authorization': `Bearer ${this.token}`
           }
         });
-
-        if (response.status === 200) {
-          await this.obtenerPuestos();
-        } else {
-          console.error('Error al eliminar el puesto por departamento:', response.statusText);
-        }
+        await this.obtenerPuestos();
       } catch (error) {
-        console.error('Error al eliminar el puesto por departamento:', error);
+        console.error('Error al eliminar el puesto:', error);
       }
     }
   },
-  mounted() {
+  created() {
     this.obtenerPuestos();
   }
 };
 </script>
 
 <style scoped>
-.container {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 0.5rem;
+/* Estilos personalizados para una mejor apariencia */
+.form-group {
+  margin-bottom: 1rem;
 }
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #4a5568;
+}
+
 button {
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
 }
+
 button:hover {
-  background-color: #333;
+  opacity: 0.9;
+}
+
+button:focus {
+  outline: none;
 }
 </style>

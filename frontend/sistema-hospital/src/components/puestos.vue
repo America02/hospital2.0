@@ -1,44 +1,26 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">Gestión de Puestos</h1>
-    <form @submit.prevent="agregarPuesto" class="mb-4">
-      <div class="grid grid-cols-2 gap-4">
-        <input v-model="nuevoPuesto.Nombre" type="text" placeholder="Nombre" class="p-2 border rounded" required />
-        <input v-model="nuevoPuesto.Descripcion" type="text" placeholder="Descripción" class="p-2 border rounded" />
-        <input v-model="nuevoPuesto.Salario" type="number" placeholder="Salario" class="p-2 border rounded" />
-        <select v-model="nuevoPuesto.Turno" class="p-2 border rounded">
-          <option disabled value="">Seleccionar turno</option>
-          <option value="Mañana">Mañana</option>
-          <option value="Tarde">Tarde</option>
-          <option value="Noche">Noche</option>
-        </select>
-      </div>
-      <button type="submit" class="bg-blue-500 text-white p-2 rounded mt-4">Agregar Puesto</button>
-    </form>
-
-    <table class="w-full border-collapse bg-white">
-      <thead class="bg-gray-100">
-        <tr>
-          <th class="border p-2">Nombre</th>
-          <th class="border p-2">Descripción</th>
-          <th class="border p-2">Salario</th>
-          <th class="border p-2">Turno</th>
-          <th class="border p-2">Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="puesto in puestos" :key="puesto.PuestoID" class="text-center">
-          <td class="border p-2">{{ puesto.Nombre }}</td>
-          <td class="border p-2">{{ puesto.Descripcion }}</td>
-          <td class="border p-2">{{ puesto.Salario }}</td>
-          <td class="border p-2">{{ puesto.Turno }}</td>
-          <td class="border p-2">
-            <button @click="editarPuesto(puesto)" class="bg-yellow-500 text-white p-1 rounded mx-1">Editar</button>
-            <button @click="eliminarPuesto(puesto.PuestoID)" class="bg-red-500 text-white p-1 rounded mx-1">Eliminar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="container mx-auto p-6">
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-6">Puestos</h1>
+    <div class="shadow-lg rounded-lg overflow-hidden bg-white">
+      <table class="w-full table-fixed">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="w-1/4 py-3 px-4 text-left text-gray-700 font-bold uppercase">Nombre</th>
+            <th class="w-1/3 py-3 px-4 text-left text-gray-700 font-bold uppercase">Descripción</th>
+            <th class="w-1/4 py-3 px-4 text-left text-gray-700 font-bold uppercase">Salario</th>
+            <th class="w-1/4 py-3 px-4 text-left text-gray-700 font-bold uppercase">Turno</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white">
+          <tr v-for="puesto in puestos" :key="puesto.PuestoID" class="hover:bg-gray-50">
+            <td class="py-4 px-6 border-b border-gray-200">{{ puesto.Nombre }}</td>
+            <td class="py-4 px-6 border-b border-gray-200">{{ puesto.Descripcion }}</td>
+            <td class="py-4 px-6 border-b border-gray-200">{{ puesto.Salario }}</td>
+            <td class="py-4 px-6 border-b border-gray-200">{{ puesto.Turno }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -48,17 +30,12 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      nuevoPuesto: {
-        Nombre: '',
-        Descripcion: '',
-        Salario: '',
-        Turno: ''
-      },
       puestos: [],
-      editando: false,
-      idEditando: null,
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Ikplc3MiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJqZXNzQDEuY29tIiwiQ29udHJhc2VuYSI6IjEyMyIsIk51bWVyb19UZWxlZm9uaWNvX01vdmlsIjoiNzY0MTExMTExMSJ9.0nMdZw0ZcxmDvVwW9N9e7ztfXxhBdeY8DJB5WCMwx-8'
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Implc3MiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJzdHJpbmciLCJDb250cmFzZW5hIjoiMTIzIiwiTnVtZXJvX1RlbGVmb25pY29fTW92aWwiOiJzdHJpbmcifQ.eulYRMRY3dI3pLCOX2Q35hlCTmUxSMYOvd2btfgFAeg'  // Reemplaza con tu token real
     };
+  },
+  mounted() {
+    this.obtenerPuestos();
   },
   methods: {
     async obtenerPuestos() {
@@ -72,75 +49,35 @@ export default {
       } catch (error) {
         console.error('Error al obtener los puestos:', error);
       }
-    },
-    async agregarPuesto() {
-      try {
-        let response;
-        if (this.editando) {
-          response = await axios.put(`http://localhost:8000/puestos/${this.idEditando}`, this.nuevoPuesto, {
-            headers: {
-              'Authorization': `Bearer ${this.token}`
-            }
-          });
-          this.editando = false;
-          this.idEditando = null;
-        } else {
-          response = await axios.post('http://localhost:8000/puestos', this.nuevoPuesto, {
-            headers: {
-              'Authorization': `Bearer ${this.token}`
-            }
-          });
-        }
-
-        if (response.status === 200) {
-          this.nuevoPuesto = { Nombre: '', Descripcion: '', Salario: '', Turno: '' };
-          await this.obtenerPuestos();
-        } else {
-          console.error('Error al guardar el puesto:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error al agregar o actualizar el puesto:', error);
-      }
-    },
-    editarPuesto(puesto) {
-      this.nuevoPuesto = { ...puesto };
-      this.editando = true;
-      this.idEditando = puesto.PuestoID;
-    },
-    async eliminarPuesto(id) {
-      try {
-        const response = await axios.delete(`http://localhost:8000/puestos/${id}`, {
-          headers: {
-            'Authorization': `Bearer ${this.token}`
-          }
-        });
-
-        if (response.status === 200) {
-          await this.obtenerPuestos();
-        } else {
-          console.error('Error al eliminar el puesto:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error al eliminar el puesto:', error);
-      }
     }
-  },
-  mounted() {
-    this.obtenerPuestos();
   }
 };
 </script>
 
 <style scoped>
+/* Diseño mejorado para la tabla */
 .container {
-  background-color: #f9f9f9;
-  padding: 2rem;
-  border-radius: 0.5rem;
+  max-width: 1200px;
 }
-button {
-  transition: background-color 0.3s ease;
+
+table {
+  border-collapse: collapse;
 }
-button:hover {
-  background-color: #333;
+
+thead th {
+  background-color: #f3f4f6;
+}
+
+tbody tr:hover {
+  background-color: #f9fafb;
+}
+
+td {
+  font-size: 16px;
+  color: #4b5563;
+}
+
+th {
+  font-size: 16px;
 }
 </style>
