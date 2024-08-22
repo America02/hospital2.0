@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       puestos: [],
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Implc3MiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJzdHJpbmciLCJDb250cmFzZW5hIjoiMTIzIiwiTnVtZXJvX1RlbGVmb25pY29fTW92aWwiOiJzdHJpbmcifQ.eulYRMRY3dI3pLCOX2Q35hlCTmUxSMYOvd2btfgFAeg'  // Reemplaza con tu token real
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Implc3NmbngiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJzdHJpbmciLCJDb250cmFzZW5hIjoiMTIzIiwiTnVtZXJvX1RlbGVmb25pY29fTW92aWwiOiJzdHJpbmcifQ.ZLj-rF91SqBN1z-IZ0tsU78lq84WZYtQ99CFesJaGBE'  // Reemplaza con tu token real
     };
   },
   mounted() {

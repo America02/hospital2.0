@@ -85,7 +85,7 @@ export default {
       },
       editando: false,
       idEditando: null,
-      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Ikplc3MiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJqZXNzQDEuY29tIiwiQ29udHJhc2VuYSI6IjEyMyIsIk51bWVyb19UZWxlZm9uaWNvX01vdmlsIjoiNzY0MTExMTExMSJ9.0nMdZw0ZcxmDvVwW9N9e7ztfXxhBdeY8DJB5WCMwx-8'
+      token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJOb21icmVfVXN1YXJpbyI6Implc3NmbngiLCJDb3JyZW9fRWxlY3Ryb25pY28iOiJzdHJpbmciLCJDb250cmFzZW5hIjoiMTIzIiwiTnVtZXJvX1RlbGVmb25pY29fTW92aWwiOiJzdHJpbmcifQ.ZLj-rF91SqBN1z-IZ0tsU78lq84WZYtQ99CFesJaGBE'
     };
   },
   methods: {
