@@ -6,10 +6,21 @@ from routes.userrol import userrol
 from routes.puestos_departamentos import puesto_departamento
 from routes.puestos import puesto
 from routes.areas_medicas import area_medica
+from fastapi.middleware.cors import CORSMiddleware
 
+# Crear la instancia de FastAPI
 app = FastAPI(
     title="HOSPITAL S.A. de C.V.",
     description="API para el almacenamiento de información de un hospital"
+)
+
+# Configuración de CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # URL de tu frontend Vue.js
+    allow_credentials=True,
+    allow_methods=["*"],  # Permitir todos los métodos HTTP
+    allow_headers=["*"],  # Permitir todos los encabezados
 )
 
 # Incluir las rutas de las tablas
